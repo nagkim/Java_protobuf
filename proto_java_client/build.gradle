@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'com.google.protobuf' version '0.9.4'
+
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+
+    // https://mvnrepository.com/artifact/org.apache.qpid/qpid-jms-client
+    implementation group: 'org.apache.qpid', name: 'qpid-jms-client', version: '2.4.0'
+    // https://mvnrepository.com/artifact/javax.jms/javax.jms-api
+    implementation group: 'javax.jms', name: 'javax.jms-api', version: '2.0.1'
+    // https://mvnrepository.com/artifact/jakarta.jms/jakarta.jms-api
+    implementation group: 'jakarta.jms', name: 'jakarta.jms-api', version: '3.1.0'
+
+
+
+
+    //************ SLF4J *****************
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.7'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.7'
+
+    // https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j
+    implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: '2.0.7'
+
+    // https://mvnrepository.com/artifact/org.slf4j/jul-to-slf4j
+    implementation group: 'org.slf4j', name: 'jul-to-slf4j', version: '2.0.7'
+
+
+
+    // *************** PROTOBUF ****************
+
+    // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.24.1'
+
+
+}
+
+sourceSets {
+
+
+    main{
+        java {
+            srcDirs 'build/generated/source/proto/main/java'
+
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.24.1'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
